@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">mvvmdagger</string>
+
+    <string name="base_url">https://api.themoviedb.org/3/</string>
+    <string name="api_key">8c0457b0a34b8e815c0e1ef2ff2aa7d1</string>
+
 </resources>

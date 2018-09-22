@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 26
@@ -45,19 +44,25 @@ dependencies {
     kapt  daggerDependencies.daggerCompiler
     kapt  daggerDependencies.daggerAndroidProcessor
 
+
     //--------- Moshi --------------
-    implementation moshiDependencies.moshiKotlin
-    implementation moshiDependencies.moshiAdapters
+    //implementation moshiDependencies.moshiKotlin
+    //implementation moshiDependencies.moshiAdapters
 
     //--------- Retrofit ----------------------
     implementation retrofitDependencies.retrofit
     implementation retrofitDependencies.converterMoshi
+    implementation retrofitDependencies.gson
     implementation retrofitDependencies.adapterRxJava
 
     // -------- DataBinding -------------------
     compile lifecycleDependencies.extensions
     kapt lifecycleDependencies.compiler
     kapt databindingDependencies.compiler
+
+    // --------- RxJava RxAndroid
+    implementation rxDependencies.rxJava
+    implementation rxDependencies.rxAndroid
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

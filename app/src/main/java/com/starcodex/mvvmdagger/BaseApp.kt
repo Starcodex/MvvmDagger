@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Application
 import com.starcodex.mvvmdagger.di.component.DaggerAppComponent
 import com.starcodex.mvvmdagger.di.module.AppModule
+import com.starcodex.mvvmdagger.di.module.network.NetModule
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -20,6 +21,7 @@ class BaseApp : Application(), HasActivityInjector {
         super.onCreate()
         DaggerAppComponent.builder()
                 .appModule(AppModule(this))
+                .netModule(NetModule(applicationContext.getString(R.string.base_url)))
                 .build().inject(this)
     }
 
