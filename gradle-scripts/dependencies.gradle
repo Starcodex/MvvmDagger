@@ -1,5 +1,6 @@
 ext {
 
+
     //Version
     supportVersion = '27.1.1'
     suppportConstraintVersion = '1.1.2'
@@ -7,12 +8,13 @@ ext {
     rxAndroidVersion = '2.0.1'
     daggerVersion = '2.14.1'
     rxJavaVersion = '2.0.2'
-    butterknifeVersion = '8.8.1'
+    archLifecycleVersion = "1.1.0"
     junitVersion = '4.12'
     okHttpVersion = '3.6.0'
     roomVersion = '1.0.0'
 
     //Packages
+    lifeCyclePackage = 'android.arch.lifecycle'
     supportPackage = 'com.android.support'
     playServicesPackage = 'com.google.android.gms'
     supportConstraintPackage = 'com.android.support.constraint'
@@ -57,6 +59,12 @@ ext {
             daggerCompiler: buildDependency(daggerPackage, 'dagger-compiler', daggerVersion),
             daggerAndroidProcessor: buildDependency(daggerPackage,'dagger-android-processor',daggerVersion)
 
+    ]
+
+    lifecycleDependencies = [
+            extensions : buildDependency(lifeCyclePackage,'extensions',archLifecycleVersion),
+            compiler : buildDependency(lifeCyclePackage,'compiler',archLifecycleVersion),
+            reactiveStreams : buildDependency(lifeCyclePackage,'reactivestreams',archLifecycleVersion)
     ]
 
     testingDependencies = [
