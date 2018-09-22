@@ -14,6 +14,7 @@ ext {
     roomVersion = '1.0.0'
     moshiVersion = '1.5.0'
     databindingVersion = '2.3.1'
+    glideVersion = '4.1.1'
 
     //Packages
     moshiPackage = 'com.squareup.moshi'
@@ -27,6 +28,7 @@ ext {
     daggerPackage = 'com.google.dagger'
     okHttpPackage = 'com.squareup.okhttp3'
     databindingPackage = 'com.android.databinding'
+    glidePackage = 'com.github.bumptech.glide'
 
 
     supportDependencies = [
@@ -79,6 +81,12 @@ ext {
 
     databindingDependencies = [
             compiler : buildDependency(databindingPackage, 'compiler', databindingVersion)
+    ]
+
+    glideDependencies = [
+
+            glide        : buildDependency(glidePackage, 'glide', glideVersion),
+            glideCompiler: buildDependency(glidePackage, 'compiler', glideVersion)
     ]
 
     testingDependencies = [

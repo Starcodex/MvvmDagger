@@ -64,6 +64,10 @@ dependencies {
     implementation rxDependencies.rxJava
     implementation rxDependencies.rxAndroid
 
+    // ---------- Glide -----------
+    compile glideDependencies.glide
+    kapt glideDependencies.glideCompiler
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

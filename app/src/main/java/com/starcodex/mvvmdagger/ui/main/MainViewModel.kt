@@ -29,6 +29,7 @@ class MainViewModel @Inject constructor(private var movieRepository: MovieReposi
         disposableObserver = object : DisposableObserver<MoviesResponse>() {
             override fun onComplete() {
                 Log.d("","COMPLETE MOVIES")
+
             }
 
             override fun onNext(movies: MoviesResponse) {
@@ -56,6 +57,8 @@ class MainViewModel @Inject constructor(private var movieRepository: MovieReposi
             }
             override fun onResponse(call: Call<MoviesResponse>?, response: Response<MoviesResponse>?) {
                 Log.d("RESPONSE SUCCESS : ", response!!.body()!!.results.toString())
+                movieAdapter.setList(response!!.body()!!.results)
+                movieAdapter.notifyDataSetChanged()
             }
 
         })

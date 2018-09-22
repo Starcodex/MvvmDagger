@@ -12,7 +12,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/imageView2"
+            android:layout_toRightOf="@+id/preview_poster"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             tools:ignore="HardcodedText">
@@ -32,7 +32,7 @@
                     android:adjustViewBounds="true"/>
 
                 <TextView
-                    android:id="@+id/filmtitle"
+                    android:id="@+id/film_title"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
@@ -59,7 +59,7 @@
                     android:adjustViewBounds="true"/>
 
                 <TextView
-                    android:id="@+id/filmoverview"
+                    android:id="@+id/film_overview"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
@@ -80,7 +80,7 @@
             android:minHeight="150dp"
             android:adjustViewBounds="true"
             android:src="@drawable/preview"
-            android:id="@+id/imageView2"
+            android:id="@+id/preview_poster"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />

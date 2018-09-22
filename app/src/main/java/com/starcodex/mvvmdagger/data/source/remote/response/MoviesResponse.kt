@@ -5,4 +5,4 @@ import com.starcodex.mvvmdagger.data.Movie
 /**
  * Created by Bonestack on 22/09/2018.
  */
-class MoviesResponse(val results: List<Movie>)
+class MoviesResponse(val results: ArrayList<Movie>)

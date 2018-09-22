@@ -8,6 +8,7 @@ import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import com.starcodex.mvvmdagger.R
 import com.starcodex.mvvmdagger.databinding.MoviesListBinding
+import com.starcodex.mvvmdagger.di.module.MainActivityModule
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         binding.moviesModel = mainViewModel
         binding.moviesReycler.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
         binding.moviesReycler.setLayoutManager(LinearLayoutManager(this))
+        binding.moviesReycler.adapter = mainViewModel.movieAdapter
         mainViewModel.getMoviesByGenre(35,applicationContext.getString(R.string.api_key))
     }
 }
