@@ -20,11 +20,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding { enabled = true }
+
+    kapt { generateStubs = true }
 }
 
-kapt {
-    generateStubs = true
-}
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -51,6 +53,11 @@ dependencies {
     implementation retrofitDependencies.retrofit
     implementation retrofitDependencies.converterMoshi
     implementation retrofitDependencies.adapterRxJava
+
+    // -------- DataBinding -------------------
+    compile lifecycleDependencies.extensions
+    kapt lifecycleDependencies.compiler
+    kapt databindingDependencies.compiler
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

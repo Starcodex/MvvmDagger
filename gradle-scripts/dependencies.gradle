@@ -13,10 +13,11 @@ ext {
     okHttpVersion = '3.6.0'
     roomVersion = '1.0.0'
     moshiVersion = '1.5.0'
+    databindingVersion = '2.3.1'
 
     //Packages
     moshiPackage = 'com.squareup.moshi'
-    lifeCyclePackage = 'android.arch.lifecycle'
+    lifecyclePackage = 'android.arch.lifecycle'
     supportPackage = 'com.android.support'
     playServicesPackage = 'com.google.android.gms'
     supportConstraintPackage = 'com.android.support.constraint'
@@ -25,6 +26,7 @@ ext {
     junitPackage = 'junit'
     daggerPackage = 'com.google.dagger'
     okHttpPackage = 'com.squareup.okhttp3'
+    databindingPackage = 'com.android.databinding'
 
 
     supportDependencies = [
@@ -65,9 +67,9 @@ ext {
     ]
 
     lifecycleDependencies = [
-            extensions : buildDependency(lifeCyclePackage,'extensions',archLifecycleVersion),
-            compiler : buildDependency(lifeCyclePackage,'compiler',archLifecycleVersion),
-            reactiveStreams : buildDependency(lifeCyclePackage,'reactivestreams',archLifecycleVersion)
+            extensions : buildDependency(lifecyclePackage,'extensions',archLifecycleVersion),
+            compiler : buildDependency(lifecyclePackage,'compiler',archLifecycleVersion),
+            reactiveStreams : buildDependency(lifecyclePackage,'reactivestreams',archLifecycleVersion)
     ]
 
     moshiDependencies = [
@@ -75,13 +77,16 @@ ext {
             moshiAdapters : buildDependency(moshiPackage,'moshi-adapters',moshiVersion)
     ]
 
+    databindingDependencies = [
+            compiler : buildDependency(databindingPackage, 'compiler', databindingVersion)
+    ]
+
     testingDependencies = [
-
-            junit      : buildDependency(junitPackage, 'junit', junitVersion),
-
+            junit      : buildDependency(junitPackage, 'junit', junitVersion)
     ]
 
     okHttp = buildDependency(okHttpPackage, 'logging-interceptor', okHttpVersion)
+
 }
 
 static String buildDependency(String pack, String dependency, String version) {
