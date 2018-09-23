@@ -18,4 +18,5 @@ interface ApiInterface {
 
     @GET("genre/{genre}/movies")
     fun getMoviesList(@Path("genre") genre:Int, @Query("api_key") apikey:String): Observable<MoviesResponse>
+
 }

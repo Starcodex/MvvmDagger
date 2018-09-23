@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 26
@@ -65,8 +66,11 @@ dependencies {
     implementation rxDependencies.rxAndroid
 
     // ---------- Glide -----------
-    compile glideDependencies.glide
+    implementation glideDependencies.glide
     kapt glideDependencies.glideCompiler
+
+    // ----------- Realm ---------------
+    compile 'io.realm:android-adapters:2.1.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

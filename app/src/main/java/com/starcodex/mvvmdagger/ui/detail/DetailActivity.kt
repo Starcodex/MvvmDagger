@@ -1,17 +1,22 @@
-package com.starcodex.mvvmdagger.ui.main
+package com.starcodex.mvvmdagger.ui.detail
 
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import com.starcodex.mvvmdagger.R
 import com.starcodex.mvvmdagger.databinding.MoviesListBinding
+import com.starcodex.mvvmdagger.ui.main.MainViewModel
+import com.starcodex.mvvmdagger.ui.main.MainViewModelFactory
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+/**
+ * Created by Bonestack on 23/09/2018.
+ */
+class DetailActivity : AppCompatActivity() {
 
     @Inject
     lateinit var mainViewModelFactory: MainViewModelFactory

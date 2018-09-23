@@ -2,17 +2,42 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable name="movieViewModel"
+            type="com.starcodex.mvvmdagger.ui.main.MovieRowViewModel"/>
+    </data>
 
-    <RelativeLayout android:layout_width="match_parent"
+    <LinearLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="4dp">
+        android:padding="4dp"
+        android:onClick="@{movieViewModel::onItemClick}"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxHeight="150dp"
+                android:minHeight="150dp"
+                android:adjustViewBounds="true"
+                android:id="@+id/preview_poster"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:src="@{movieViewModel.imageUrl}" />
+
+        </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_weight="6"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/preview_poster"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             tools:ignore="HardcodedText">
@@ -38,7 +63,7 @@
                     android:paddingLeft="10dp"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:text="Avatar"
+                    android:text="@{movieViewModel.title}"
                     android:textColor="@color/colorAccent"/>
 
             </LinearLayout>
@@ -60,11 +85,11 @@
 
                 <TextView
                     android:id="@+id/film_overview"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
                     android:paddingTop="4dp"
-                    android:text="Avatar"
+                    android:text="@{movieViewModel.overview}"
                     android:textColor="@color/colorPrimary"
                     android:textSize="12sp"/>
 
@@ -73,18 +98,6 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxHeight="150dp"
-            android:minHeight="150dp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/preview"
-            android:id="@+id/preview_poster"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
 
-
-    </RelativeLayout>
+    </LinearLayout>
 </layout>
