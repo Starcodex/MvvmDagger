@@ -14,26 +14,30 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var mainViewModelFactory: MainViewModelFactory
-
     lateinit var mainViewModel: MainViewModel
+    //lateinit var mainViewModelFactory: MainViewModelFactory
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AndroidInjection.inject(this)
         val binding: MoviesListBinding = DataBindingUtil.setContentView(this, R.layout.movies_list)
-        mainViewModel = ViewModelProviders.of(this, mainViewModelFactory).get(
-                MainViewModel::class.java)
+        //var mainViewModel: MainViewModel = ViewModelProviders.of(this, mainViewModelFactory).get(MainViewModel::class.java)
+        initRecycler(mainViewModel,binding)
+        retieveMovies(mainViewModel)
 
-        initRecycler(binding)
     }
 
 
-    fun initRecycler(binding: MoviesListBinding){
+    fun initRecycler(mainViewModel: MainViewModel,binding: MoviesListBinding){
         binding.moviesViewModel = mainViewModel
         binding.moviesReycler.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
         binding.moviesReycler.setLayoutManager(LinearLayoutManager(this))
         binding.moviesReycler.adapter = mainViewModel.moviesAdapter
+
+    }
+
+    fun retieveMovies(mainViewModel: MainViewModel){
         mainViewModel.fetchMoviesList(35,applicationContext.getString(R.string.api_key))
     }
 }

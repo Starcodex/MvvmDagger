@@ -1,6 +1,7 @@
 package com.starcodex.mvvmdagger.di.module
 
 import com.starcodex.mvvmdagger.di.component.MainActivityComponent
+import com.starcodex.mvvmdagger.ui.detail.DetailActivity
 import com.starcodex.mvvmdagger.ui.main.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -13,4 +14,7 @@ abstract class BuilderModule {
 
     @ContributesAndroidInjector(modules = arrayOf(MainActivityModule::class))
     abstract fun bindMainActivity(): MainActivity
+
+    @ContributesAndroidInjector(modules = arrayOf(DetailActivityModule::class))
+    abstract fun bindDetailActivity(): DetailActivity
 }

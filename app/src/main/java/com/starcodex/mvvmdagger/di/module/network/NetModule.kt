@@ -24,9 +24,6 @@ class NetModule(private val baseUrl: String) {
     @Singleton
     fun providesOkHttpClient(): OkHttpClient = OkHttpClient.Builder().build()
 
-/*    @Provides
-    @Singleton
-    fun providesMoshi(): Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()*/
 
     @Provides
     @Singleton
@@ -56,16 +53,6 @@ class NetModule(private val baseUrl: String) {
                 .build()
     }
 
-
-    /*
-    @Provides
-    @Singleton
-    fun providesRetrofit(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit {
-        return Retrofit.Builder().client(okHttpClient).baseUrl(baseUrl)
-                .addConverterFactory(MoshiConverterFactory.create(moshi))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build()
-    }*/
 
     @Provides
     @Singleton

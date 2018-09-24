@@ -1,17 +1,16 @@
-package com.starcodex.mvvmdagger.ui.main
+package com.starcodex.mvvmdagger.ui.list
 
 import android.content.Context
 import android.databinding.BaseObservable
 import android.databinding.BindingAdapter
-import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.starcodex.mvvmdagger.R
-import com.starcodex.mvvmdagger.data.Movie
 import com.starcodex.mvvmdagger.data.source.local.MovieItem
+import com.starcodex.mvvmdagger.ui.detail.DetailActivity
+import com.starcodex.mvvmdagger.ui.main.MainActivity
 import javax.inject.Inject
 
 /**
@@ -36,21 +35,19 @@ constructor(private var context: Context) : BaseObservable() {
         get() = context.getString(R.string.movie_img)+movie!!.poster_path!!
 
 
-
     object ImageBindingAdapter {
         @JvmStatic
         @BindingAdapter("android:src")
         fun setImageUrl(view: ImageView, url: String) {
             Glide.with(view.getContext())
                     .load(url)
-                    .apply(RequestOptions().placeholder(R.drawable.preview).error(R.drawable.preview))
                     .into(view)
         }
     }
 
     fun onItemClick(view: View) {
+        DetailActivity.navigate(context as MainActivity, view.findViewById(R.id.preview_poster), this!!.movie!!)
         Toast.makeText(context,movie!!.title, Toast.LENGTH_SHORT).show()
-
     }
 
 }

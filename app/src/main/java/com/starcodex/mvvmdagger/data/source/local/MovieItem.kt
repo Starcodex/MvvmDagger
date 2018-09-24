@@ -4,11 +4,12 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
+import java.io.Serializable
 
 /**
  * Created by Bonestack on 22/09/2018.
  */
-open class MovieItem : RealmObject() {
+open class MovieItem : RealmObject() , Serializable{
 
     @SerializedName("id")
     @Expose
