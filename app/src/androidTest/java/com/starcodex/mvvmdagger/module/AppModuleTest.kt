@@ -1,9 +1,8 @@
-package com.starcodex.mvvmdagger.di.module
+package com.starcodex.mvvmdagger.module
 
 import android.app.Application
+import android.content.Context
 import com.starcodex.mvvmdagger.data.source.MovieRepository
-import com.starcodex.mvvmdagger.data.source.local.MovieRepo
-import com.starcodex.mvvmdagger.data.source.local.RealmMovieRepository
 import com.starcodex.mvvmdagger.data.source.remote.ApiInterface
 import com.starcodex.mvvmdagger.util.SchedulerProvider
 import dagger.Module
@@ -11,14 +10,14 @@ import dagger.Provides
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.realm.Realm
-import javax.inject.Provider
+import org.mockito.Mockito
 import javax.inject.Singleton
 
 /**
- * Created by Bonestack on 22/09/2018.
+ * Created by Bonestack on 25/09/2018.
  */
 @Module
-open class AppModule(val app: Application){
+open class AppModuleTest(val app: Application){
 
     @Provides
     @Singleton
@@ -29,13 +28,12 @@ open class AppModule(val app: Application){
     open fun provideApplication(): Application = app
 
     @Provides
-    open fun provideRealm(): Realm = Realm.getDefaultInstance()
+    @Singleton
+    open fun provideRealm(): Realm = Mockito.spy(Realm.getDefaultInstance())
 
-    //@Provides
-    //open fun provideRealmMovieRepository(realm : Provider<Realm>) = RealmMovieRepository(realm)
 
     @Provides
-    open fun provideMovieRepository(movieRepo: MovieRepo,apiInterface: ApiInterface)= MovieRepository(apiInterface)
-
+    @Singleton
+    open fun provideContext() : Context = app.applicationContext
 
 }

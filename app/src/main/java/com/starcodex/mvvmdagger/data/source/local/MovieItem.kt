@@ -9,7 +9,15 @@ import java.io.Serializable
 /**
  * Created by Bonestack on 22/09/2018.
  */
-open class MovieItem : RealmObject() , Serializable{
+open class MovieItem : RealmObject() , Serializable,Comparable<MovieItem>{
+    override fun compareTo(other: MovieItem): Int {
+        if (title != null && other.title != null) {
+            return title!!.compareTo(other.title!!)
+        } else {
+            return 0
+        }
+    }
+
 
     @SerializedName("id")
     @Expose

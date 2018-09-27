@@ -1,29 +1,25 @@
-package com.starcodex.mvvmdagger.di.module.network
+package com.starcodex.mvvmdagger.module
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-//import com.squareup.moshi.KotlinJsonAdapterFactory
-import com.squareup.moshi.Moshi
 import com.starcodex.mvvmdagger.data.source.MovieRepository
-import com.starcodex.mvvmdagger.data.source.local.RealmMovieRepository
 import com.starcodex.mvvmdagger.data.source.remote.ApiInterface
-import dagger.Binds
+import com.starcodex.mvvmdagger.di.module.network.AutoValueAdapterFactory
+import com.starcodex.mvvmdagger.di.module.network.NetModule
 import dagger.Module
 import dagger.Provides
-import io.realm.Realm
 import okhttp3.OkHttpClient
+import org.mockito.Mockito
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.moshi.MoshiConverterFactory
-import javax.inject.Provider
 import javax.inject.Singleton
 
 /**
- * Created by Bonestack on 22/09/2018.
+ * Created by Bonestack on 25/09/2018.
  */
 @Module
-open class NetModule(private val baseUrl: String) {
+class NetModuleTest(private val baseUrl: String) {
 
     @Provides
     @Singleton
@@ -62,9 +58,10 @@ open class NetModule(private val baseUrl: String) {
 
 
     @Provides
-    @Singleton
-    open fun providesApiInterface(retrofit: Retrofit): ApiInterface = retrofit.create(
+     fun providesApiInterface(retrofit: Retrofit): ApiInterface = retrofit.create(
             ApiInterface::class.java)
 
-
+    @Provides
+    @Singleton
+    fun provideMovieRepository(apiInterface: ApiInterface)= MovieRepository(apiInterface)
 }

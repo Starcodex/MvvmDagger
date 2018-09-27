@@ -12,14 +12,21 @@ import com.starcodex.mvvmdagger.data.source.local.MovieItem
 import com.starcodex.mvvmdagger.ui.detail.DetailActivity
 import com.starcodex.mvvmdagger.ui.main.MainActivity
 import javax.inject.Inject
+import android.app.Activity
+import android.app.Application
+import android.support.v7.app.AppCompatActivity
+import com.starcodex.mvvmdagger.BaseApp
+import java.security.AccessController.getContext
+
 
 /**
  * Created by Bonestack on 22/09/2018.
  */
 class MovieRowViewModel @Inject
-constructor(private var context: Context) : BaseObservable() {
+constructor(private var context: Application) : BaseObservable() {
 
     var movie: MovieItem? = null
+    var app = context as BaseApp
 
     fun bindMovie(movie: MovieItem) {
         this.movie = movie
@@ -46,7 +53,8 @@ constructor(private var context: Context) : BaseObservable() {
     }
 
     fun onItemClick(view: View) {
-        DetailActivity.navigate(context as MainActivity, view.findViewById(R.id.preview_poster), this!!.movie!!)
+        //val a = getContext() as MainActivity
+        DetailActivity.navigate(app.getCurrentActivity() as AppCompatActivity, view.findViewById(R.id.preview_poster), this!!.movie!!)
         Toast.makeText(context,movie!!.title, Toast.LENGTH_SHORT).show()
     }
 

@@ -2,6 +2,7 @@ package com.starcodex.mvvmdagger
 
 import android.app.Activity
 import android.app.Application
+import com.starcodex.mvvmdagger.di.component.AppComponent
 import com.starcodex.mvvmdagger.di.component.DaggerAppComponent
 import com.starcodex.mvvmdagger.di.module.AppModule
 import com.starcodex.mvvmdagger.di.module.network.NetModule
@@ -25,17 +26,38 @@ class BaseApp : Application(), HasActivityInjector {
         inject()
         initRealm()
     }
-
+    lateinit var appComponent: AppComponent
 
     fun inject(){
-        DaggerAppComponent.builder()
+        appComponent =DaggerAppComponent.builder()
                 .appModule(AppModule(this))
                 .netModule(NetModule(applicationContext.getString(R.string.base_url)))
-                .build().inject(this)
+                .build()
+        appComponent.inject(this)
     }
 
     fun initRealm(){
         Realm.init(this)
         Realm.setDefaultConfiguration(RealmConfiguration.Builder().build())
     }
+
+    private var mCurrentActivity: Activity? = null
+    fun getCurrentActivity(): Activity? {
+        return mCurrentActivity
+    }
+
+    fun setCurrentActivity(mCurrentActivity: Activity?) {
+        this.mCurrentActivity = mCurrentActivity
+    }
+
+/*
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication>? {
+        return DaggerAppComponent
+                .builder()
+                .create(this)
+                .appModule(AppModule(this))
+                .netModule(NetModule(applicationContext.getString(R.string.base_url)))
+                .build()
+    }*/
+
 }

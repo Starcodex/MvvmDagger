@@ -3,6 +3,7 @@ package com.starcodex.mvvmdagger.data.source.remote
 import com.starcodex.mvvmdagger.data.Movie
 import com.starcodex.mvvmdagger.data.source.remote.response.MoviesResponse
 import io.reactivex.Observable
+import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

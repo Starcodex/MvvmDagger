@@ -15,13 +15,14 @@ import android.view.View
 import com.starcodex.mvvmdagger.R
 import com.starcodex.mvvmdagger.data.source.local.MovieItem
 import com.starcodex.mvvmdagger.databinding.MovieDetailBinding
+import com.starcodex.mvvmdagger.ui.BaseActivity
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
 /**
  * Created by Bonestack on 23/09/2018.
  */
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : BaseActivity() {
 
 
     companion object {
@@ -59,9 +60,8 @@ class DetailActivity : AppCompatActivity() {
             transition.excludeTarget(android.R.id.statusBarBackground, true)
             window.enterTransition = transition
             window.returnTransition = transition
+            ViewCompat.setTransitionName(binding.image, EXTRA_IMAGE)
         }
-
-        ViewCompat.setTransitionName(binding.image, EXTRA_IMAGE)
     }
 
 

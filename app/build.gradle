@@ -8,12 +8,20 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.starcodex.mvvmdagger"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+        testApplicationId "com.starcodex.mvvmdagger.test"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    testOptions {
+        reportDir = "$project.buildDir/results/report"
+        resultsDir = "$project.buildDir/results"
+        unitTests.returnDefaultValues = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -24,14 +32,18 @@ android {
     dataBinding { enabled = true }
 
     kapt { generateStubs = true }
+    sourceSets { debug { java.srcDirs = ['src/debug/java', 'src/debug/java/'] } }
 }
 
-
+configurations.all {
+    resolutionStrategy {
+        force 'org.jetbrains.kotlin:kotlin-stdlib:1.1.2-5'
+    }
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // -------------- Android Support -----------
     implementation supportDependencies.appCompat
@@ -42,9 +54,9 @@ dependencies {
 
     // ------- Dagger --------------
     implementation daggerDependencies.daggerAndroid
-    kapt  daggerDependencies.daggerCompiler
-    kapt  daggerDependencies.daggerAndroidProcessor
-
+    implementation daggerDependencies.daggerAndroidSupport
+    kapt daggerDependencies.daggerCompiler
+    kapt daggerDependencies.daggerAndroidProcessor
 
     //--------- Moshi --------------
     //implementation moshiDependencies.moshiKotlin
@@ -69,8 +81,37 @@ dependencies {
     implementation glideDependencies.glide
     kapt glideDependencies.glideCompiler
 
+    /* TESTING */
 
+    // ----------- Dagger -------------
+    testImplementation daggerDependencies.daggerAndroid
+    testImplementation daggerDependencies.daggerAndroidSupport
+    androidTestImplementation daggerDependencies.daggerAndroid
+    androidTestImplementation daggerDependencies.daggerAndroidSupport
+    kaptAndroidTest daggerDependencies.daggerCompiler
+    kaptAndroidTest daggerDependencies.daggerAndroidProcessor
+    kaptTest daggerDependencies.daggerCompiler
+    kaptTest daggerDependencies.daggerAndroidProcessor
+
+    // ---------- Mockito ----------
+    androidTestImplementation "org.mockito:mockito-android:2.18.3"
+    androidTestImplementation 'com.github.tmurakami:dexopener:0.12.1'
+    testImplementation "org.mockito:mockito-android:2.18.3"
+    testImplementation 'com.github.tmurakami:dexopener:0.12.1'
+
+    //----------- Dagger Mock ------------
+    testImplementation 'com.github.fabioCollini.daggermock:daggermock:0.8.4'
+    testImplementation 'com.github.fabioCollini.daggermock:daggermock-kotlin:0.8.4'
+    androidTestImplementation 'com.github.fabioCollini.daggermock:daggermock:0.8.4'
+    androidTestImplementation 'com.github.fabioCollini.daggermock:daggermock-kotlin:0.8.4'
+
+    // ------------ Realm ------------
+    kapt "io.realm:realm-annotations-processor:4.3.4"
+    kapt "io.realm:realm-annotations:4.3.4"
+
+    // --------------------
     testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation  'com.android.support.test.espresso:espresso-core:3.0.2'
 }
