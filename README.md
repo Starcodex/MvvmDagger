@@ -11,6 +11,7 @@ Implementing a Local DataBase Using https://realm.io/
  RxJava For Observables (Local Database changes and remote Api responses)
  DataBinding for bind views with ViewModels
  Retrofit for Remote Data
+ Glide for Image Loads
  Kotlin language
  
  
