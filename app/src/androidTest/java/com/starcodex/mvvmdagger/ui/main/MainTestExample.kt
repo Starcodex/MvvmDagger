@@ -1,6 +1,5 @@
 package com.starcodex.mvvmdagger.ui.main
 
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.graphics.Movie
 import android.support.test.InstrumentationRegistry
