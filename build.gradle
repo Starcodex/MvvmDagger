@@ -2,16 +2,17 @@
 apply from: 'gradle-scripts/dependencies.gradle'
 
 buildscript {
-    ext.kotlin_version = '1.1.51'
+    ext.kotlin_version = '1.2.60'
     repositories {
         google()
         jcenter()
         maven { url "https://jitpack.io" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.1.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "io.realm:realm-gradle-plugin:4.3.4"
+
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

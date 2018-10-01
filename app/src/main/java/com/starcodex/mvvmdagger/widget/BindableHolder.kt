@@ -16,7 +16,7 @@ class BindableHolder<T : ViewDataBinding>(context: Context, parent: ViewGroup, @
     val binding: T
 
     init {
-        binding = DataBindingUtil.bind(itemView)
+        binding = DataBindingUtil.bind(itemView)!!
     }
 
 }

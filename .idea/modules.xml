@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mvvmdagger.iml" filepath="$PROJECT_DIR$/mvvmdagger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/daggermvvmclone.iml" filepath="$PROJECT_DIR$/daggermvvmclone.iml" />
+      <module fileurl="file://D:\Android Studio Projects\Job Tests\daggermvvmclone\mvvmdagger.iml" filepath="D:\Android Studio Projects\Job Tests\daggermvvmclone\mvvmdagger.iml" />
     </modules>
   </component>
 </project>
